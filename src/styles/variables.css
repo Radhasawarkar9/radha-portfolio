@@ -1,0 +1,76 @@
+:root {
+  --bg: #050608;
+  --bg1: #090b0e;
+  --bg2: #0e1014;
+  --bg3: #131619;
+  --bg4: #1a1d22;
+  --bg5: #22262c;
+
+  --border: rgba(255, 255, 255, 0.055);
+  --bord2: rgba(255, 255, 255, 0.11);
+  --bord3: rgba(255, 255, 255, 0.18);
+
+  --teal: #00d4aa;
+  --teal2: #00b894;
+  --teal3: rgba(0, 212, 170, 0.12);
+  --teal4: rgba(0, 212, 170, 0.06);
+
+  --amber: #f0a500;
+  --red: #ff4d6a;
+  --green: #28c840;
+
+  --w1: #f2f0ed;
+  --w2: #b0aca6;
+  --w3: #6a6560;
+  --w4: #3a3835;
+
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Syne', sans-serif;
+  --serif: 'Instrument Serif', serif;
+
+  --nh: 64px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --px: clamp(1.4rem, 6vw, 5.5rem);
+  --rad: 8px;
+}
+
+/* ══════════════════════════════
+   LIGHT MODE
+══════════════════════════════ */
+body.light {
+  --bg: #f3f5f9;
+  --bg1: #ebecf0;
+  --bg2: #ffffff;
+  --bg3: #f0f2f7;
+  --bg4: #e2e5ec;
+  --bg5: #ced3dc;
+
+  --border: rgba(0, 0, 0, 0.075);
+  --bord2: rgba(0, 0, 0, 0.13);
+  --bord3: rgba(0, 0, 0, 0.22);
+
+  --teal3: rgba(0, 180, 148, 0.1);
+  --teal4: rgba(0, 180, 148, 0.07);
+
+  --w1: #0d1014;
+  --w2: #2b3040;
+  --w3: #58606e;
+  --w4: #96a0ac;
+}
+
+body.light {
+  color: var(--w2);
+}
+body.light::after {
+  opacity: 0;
+}
+body.light ::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+body.light ::-webkit-scrollbar-thumb {
+  background: var(--bg4);
+}
+body.light ::selection {
+  background: var(--teal);
+  color: #fff;
+}

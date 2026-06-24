@@ -1,0 +1,238 @@
+/* ══════════════════════════════
+   PAGE WRAPPER
+══════════════════════════════ */
+#wrap {
+  position: relative;
+  z-index: 1;
+  padding-top: var(--nh);
+}
+.pg {
+  display: block;
+}
+.pg.active {
+  display: block;
+  animation: pgIn 0.45s var(--ease) both;
+}
+@keyframes pgIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ══════════════════════════════
+   SHARED SECTION HEADING
+══════════════════════════════ */
+.sec {
+  padding: 4rem var(--px) 5rem;
+}
+.sh {
+  margin-bottom: 3rem;
+}
+.sh-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--teal);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.6rem;
+}
+.sh-tag::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--teal);
+}
+.sh h2 {
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  color: var(--w1);
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+.sh h2 em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--teal);
+  font-weight: 400;
+}
+
+/* ══════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════ */
+.rv {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+}
+.rvL {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+}
+.rvR {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+}
+.rv.in,
+.rvL.in,
+.rvR.in {
+  opacity: 1;
+  transform: translate(0);
+}
+.d1 {
+  transition-delay: 0.07s;
+}
+.d2 {
+  transition-delay: 0.14s;
+}
+.d3 {
+  transition-delay: 0.21s;
+}
+.d4 {
+  transition-delay: 0.28s;
+}
+.d5 {
+  transition-delay: 0.35s;
+}
+.d6 {
+  transition-delay: 0.42s;
+}
+.d7 {
+  transition-delay: 0.49s;
+}
+.d8 {
+  transition-delay: 0.56s;
+}
+.d9 {
+  transition-delay: 0.63s;
+}
+.d10 {
+  transition-delay: 0.7s;
+}
+
+/* ══════════════════════════════
+   BUTTONS
+══════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.78rem 1.7rem;
+  border-radius: 5px;
+  transition: transform 0.2s var(--ease), background 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn-primary {
+  background: var(--teal);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: var(--w1);
+  box-shadow: 0 10px 32px rgba(0, 212, 170, 0.22);
+}
+.btn-ghost {
+  border: 1px solid var(--bord2);
+  color: var(--w2);
+}
+.btn-ghost:hover {
+  border-color: var(--bord3);
+  color: var(--w1);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ══════════════════════════════
+   TAGS
+══════════════════════════════ */
+.tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--w3);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.tag-teal {
+  color: var(--teal);
+  border-color: rgba(0, 212, 170, 0.25);
+  background: rgba(0, 212, 170, 0.06);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.6);
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ══════════════════════════════
+   404 — NOT FOUND PAGE
+══════════════════════════════ */
+.nf-sec {
+  min-height: calc(100vh - var(--nh));
+  display: flex;
+  align-items: center;
+}
+.nf-inner {
+  width: 100%;
+  text-align: center;
+}
+.nf-tag {
+  justify-content: center;
+  display: inline-flex;
+}
+.nf-heading {
+  margin: 0.6rem 0 1.2rem;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  color: var(--w1);
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+.nf-heading em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--teal);
+  font-weight: 400;
+}
+.nf-desc {
+  margin: 0 auto 2rem;
+  max-width: 480px;
+}
+.nf-actions {
+  justify-content: center;
+}

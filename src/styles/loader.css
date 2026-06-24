@@ -1,0 +1,156 @@
+/* ══════════════════════════════
+   LOADER
+══════════════════════════════ */
+#ldr {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Default (no modifier class) = fully hidden and click-through. This
+     matters because Loader.jsx clears both `.show` and `.out` once the
+     intro finishes (stage === 'hidden'), leaving #ldr with no class at
+     all. The old rules defaulted this bare state to opacity:1 /
+     visibility:visible / pointer-events:all — which made the splash
+     silently fade back in (looking like a second "reload") and then
+     permanently block every click on the page, since this element
+     covers the full viewport at the highest z-index in the app. */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.48s var(--ease), visibility 0.48s, background 0.35s;
+}
+#ldr.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+#ldr.out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+body.light #ldr {
+  background: var(--bg);
+}
+body.light .ldr-sq {
+  background: var(--bg4);
+}
+
+.ldr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 2.2rem;
+  animation: ldrSpin 2.4s linear infinite;
+}
+.ldr-sq {
+  background: var(--bg4);
+  border-radius: 3px;
+  animation: ldrPulse 1.4s ease-in-out infinite;
+}
+.ldr-sq:nth-child(1) {
+  animation-delay: 0s;
+}
+.ldr-sq:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.ldr-sq:nth-child(3) {
+  animation-delay: 0.35s;
+}
+.ldr-sq:nth-child(4) {
+  animation-delay: 0.5s;
+}
+.ldr-sq.teal {
+  background: var(--teal);
+}
+@keyframes ldrPulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes ldrSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.ldr-name {
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  letter-spacing: -0.02em;
+  color: var(--w1);
+  text-align: center;
+  line-height: 0.95;
+  overflow: hidden;
+}
+.ldr-name span {
+  display: block;
+  animation: ldrSlide 0.7s var(--ease) both;
+}
+.ldr-name .ln1 {
+  animation-delay: 0.05s;
+}
+.ldr-name .ln2 {
+  color: var(--teal);
+  animation-delay: 0.15s;
+  font-style: italic;
+  font-family: var(--serif);
+}
+.ldr-name .ln3 {
+  animation-delay: 0.25s;
+}
+.ldr-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--w3);
+  margin-top: 1rem;
+  animation: ldrFade 0.4s ease 0.3s both;
+}
+.ldr-bar-wrap {
+  width: clamp(160px, 28vw, 280px);
+  height: 1px;
+  background: var(--bg4);
+  margin-top: 1.8rem;
+  border-radius: 1px;
+  overflow: hidden;
+  animation: ldrFade 0.3s ease 0.25s both;
+}
+.ldr-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--teal), var(--amber));
+}
+@keyframes ldrSlide {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes ldrFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,327 @@
+/* ══════════════════════════════
+   CONTACT
+══════════════════════════════ */
+.contact-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+.ct-left p {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--w3);
+  margin-bottom: 1.6rem;
+}
+.ct-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--w1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1.6rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.ct-email:hover {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+.soc-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.soc-link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.9rem 1.1rem;
+  font-size: 13px;
+  color: var(--w2);
+  transition: border-color 0.2s, color 0.2s, transform 0.2s var(--ease);
+}
+.soc-link:hover {
+  border-color: var(--bord2);
+  color: var(--w1);
+  transform: translateX(5px);
+}
+.soc-link svg {
+  width: 15px;
+  height: 15px;
+  opacity: 0.45;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+.soc-link:hover svg {
+  opacity: 1;
+  color: var(--teal);
+}
+body.light .soc-link:hover svg {
+  color: var(--teal);
+}
+.soc-link-end {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--w3);
+  margin-left: auto;
+}
+
+.cf-avail {
+  background: var(--bg2);
+  border: 1px solid var(--bord2);
+  border-radius: var(--rad);
+  padding: 1.3rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+  overflow: hidden;
+}
+.cf-avail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--teal) 40%, transparent);
+}
+.cf-avail-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+.cf-avail-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: pulse 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.cf-avail-status {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.cf-avail-title {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--w1);
+  margin-bottom: 0.25rem;
+}
+.cf-avail-desc {
+  font-size: 12.5px;
+  color: var(--w3);
+  line-height: 1.7;
+}
+
+.ct-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.cf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+.fg {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  position: relative;
+}
+.fg label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--w3);
+  transition: color 0.25s;
+}
+.fg:focus-within label {
+  color: var(--teal);
+}
+.fi,
+.ft {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.68rem 0.9rem;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--w2);
+  outline: none;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  width: 100%;
+}
+body.light .fi,
+body.light .ft {
+  color: var(--w2);
+}
+.ft {
+  resize: vertical;
+  min-height: 105px;
+}
+.fi::placeholder,
+.ft::placeholder {
+  color: var(--w4);
+}
+.fi:focus,
+.ft:focus {
+  border-color: rgba(0, 212, 170, 0.45);
+  background: var(--bg3);
+  color: var(--w1);
+  box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.05);
+}
+body.light .fi:focus,
+body.light .ft:focus {
+  background: var(--bg3);
+}
+.fg .fline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1.5px;
+  width: 0;
+  background: var(--teal);
+  border-radius: 0 0 5px 5px;
+  transition: width 0.35s var(--ease);
+  pointer-events: none;
+}
+.fg:focus-within .fline {
+  width: 100%;
+}
+.fvalid {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: var(--teal);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.fg.valid .fvalid {
+  opacity: 1;
+}
+.fchar {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--w3);
+  text-align: right;
+  margin-top: 0.15rem;
+}
+.fchar.warn {
+  color: var(--amber);
+}
+.fchar.over {
+  color: var(--red);
+}
+.cf-submit-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.cf-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--teal);
+  padding: 0.78rem 1.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s, transform 0.18s var(--ease), box-shadow 0.2s;
+}
+.cf-btn:hover {
+  background: var(--w1);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 212, 170, 0.2);
+}
+.cf-btn.sending {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.cf-btn.done {
+  background: #28c840;
+  color: #fff;
+}
+.cf-copy {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--w3);
+  border: 1px solid var(--border);
+  background: none;
+  padding: 0.42rem 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, transform 0.15s;
+}
+.cf-copy:hover {
+  color: var(--teal);
+  border-color: rgba(0, 212, 170, 0.3);
+  transform: translateY(-1px);
+}
+.cf-copy.copied {
+  color: var(--teal);
+  border-color: rgba(0, 212, 170, 0.4);
+}
+.cf-status {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: var(--w3);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.cf-status.vis {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cf-status.ok {
+  color: #28c840;
+}
+.cf-status.err {
+  color: var(--red);
+}
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  animation: rippleOut 0.55s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes rippleOut {
+  to {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}

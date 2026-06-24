@@ -1,0 +1,186 @@
+/* ══════════════════════════════
+   PROJECTS — Equal-size buttons pinned to bottom
+══════════════════════════════ */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 0.65rem;
+  align-items: stretch;
+}
+
+/* Each card fills its grid cell fully */
+.pc {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--rad);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: border-color 0.25s, transform 0.32s var(--ease);
+}
+.pc:hover {
+  border-color: var(--bord2);
+  transform: translateY(-5px);
+}
+.pc-img {
+  height: 190px;
+  overflow: hidden;
+  background: var(--bg3);
+  position: relative;
+  flex-shrink: 0;
+}
+.pc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease), filter 0.4s;
+}
+.pc:hover .pc-img img {
+  transform: scale(1.05);
+  filter: brightness(0.75) saturate(0.85);
+}
+.pc-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  background: rgba(0, 212, 170, 0.12);
+  border: 1px solid rgba(0, 212, 170, 0.25);
+  padding: 0.18rem 0.5rem;
+  border-radius: 3px;
+}
+
+/* Card body: flex column, flex:1 fills remaining height */
+.pc-body {
+  padding: 1.15rem 1.25rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.pc-body h4 {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--w1);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}
+.pc-body > p {
+  font-size: 12.5px;
+  color: var(--w3);
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Tags fill middle space */
+.pc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  flex: 1;
+  align-content: flex-start;
+}
+
+/* Button row — margin-top:auto pushes to bottom of every card */
+.pc-btn-row {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+body.light .pc-btn-row {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Unified live button — fixed height so ALL buttons are pixel-identical */
+.pc-live-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.48rem;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  border: 1px solid rgba(0, 212, 170, 0.28);
+  background: rgba(0, 212, 170, 0.05);
+  padding: 0 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  height: 46px;
+  min-height: 46px;
+  transition: background 0.22s var(--ease), color 0.22s, border-color 0.22s,
+    transform 0.18s var(--ease), box-shadow 0.22s;
+}
+.pc-live-btn:hover,
+.pc-live-btn:focus-visible {
+  background: var(--teal);
+  color: var(--bg);
+  border-color: var(--teal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 212, 170, 0.22);
+  outline: none;
+}
+.pc-live-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+.pc-live-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+body.light .pc-live-btn {
+  background: rgba(0, 180, 148, 0.07);
+  border-color: rgba(0, 180, 148, 0.3);
+}
+body.light .pc-live-btn:hover,
+body.light .pc-live-btn:focus-visible {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+}
+
+/* Disabled "No Live Demo" state */
+.pc-live-btn.pc-no-link {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+  color: var(--w3);
+  border-color: var(--border);
+  background: transparent;
+}
+
+.img-ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--bg3), var(--bg2));
+  color: var(--w3);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
