@@ -5,7 +5,7 @@
  * Pipeline:
  *   1. Parse & validate the form payload server-side
  *   2. Insert a row into Supabase via REST API (service_role key — bypasses RLS)
- *   3. Fire-and-forget POST to Google Apps Script for email notification
+ *   3. POST to Google Apps Script for email notification (AWAITED)
  *
  * Environment variables (set in Netlify dashboard → Site configuration → Environment variables):
  *   SUPABASE_URL           https://<project-id>.supabase.co
@@ -98,16 +98,24 @@ export const handler = async (event) => {
     return json({ error: 'Failed to save your message — please try again' }, 500);
   }
 
-  // ── 2. Email notification via Google Apps Script (fire-and-forget) ───────
+  // ── 2. Email notification via Google Apps Script (AWAITED — must finish
+  //       before the Lambda response is sent, or Netlify freezes the
+  //       execution context and kills this request mid-flight) ─────────────
   const gasUrl = process.env.GOOGLE_APPS_SCRIPT_URL;
   if (gasUrl) {
-    fetch(gasUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, subject, message }),
-    }).catch((err) =>
-      console.error('[contact] GAS email notification failed (non-fatal):', err.message),
-    );
+    try {
+      const gasRes = await fetch(gasUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+      if (!gasRes.ok) {
+        const errText = await gasRes.text().catch(() => '');
+        console.error('[contact] GAS responded with error:', gasRes.status, errText);
+      }
+    } catch (err) {
+      console.error('[contact] GAS email notification failed (non-fatal):', err.message);
+    }
   } else {
     console.warn('[contact] GOOGLE_APPS_SCRIPT_URL not set — email notification skipped');
   }
